@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 use App\Autoloader;
 use App\Core\Router;
-include '/home/cefiidev/www/guillaume1284/SESSION/Autoloader.php';
+include '/var/www/public/SESSION/Autoloader.php';
 Autoloader::register();
 $route = new Router();
 $route->routes();
