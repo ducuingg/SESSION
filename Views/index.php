@@ -43,7 +43,7 @@
     <button type="submit" name="action" id="action" class="btn btn-primary">Connexion</button>
   </fieldset>
 </form>
-<p> Pas encore de compte ?<a href="index.php?controller=login&action=creation"> Je crée mon compte</a>
+<p> Pas encore de compte ?<a href="index.php?controller=inscription&action=creation"> Je crée mon compte</a>
 
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

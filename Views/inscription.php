@@ -1,5 +1,5 @@
 <div class= 'container mt-5'>
-    <form class='col-3 m-auto bg-warning rounded p-3 shadow' action='' method='POST'>
+    <form class='col-3 m-auto bg-warning rounded p-3 shadow' action='index.php?controller=inscription&action=inscription' method='POST'>
         <legend> Formulaire d'inscription</legend>
             <div class='form-group'>
                     <input type='hidden' class='form-control' name='id' id='id'  readonly>

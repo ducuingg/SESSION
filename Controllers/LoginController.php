@@ -11,8 +11,5 @@ error_reporting(E_ALL);
 
 class LoginController extends Cont
 {
-    public function creation()
-    {
-        $this->render('inscription');
-    }
+  
 }
