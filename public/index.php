@@ -8,7 +8,6 @@ Autoloader::register();
 $route = new Router();
 $route->routes();
 
-
 class Dispatcher{
     public function dispatch(){
         $controller = (isset($_GET['controller']))?$_GET['controller']:"Home";

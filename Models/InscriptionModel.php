@@ -10,19 +10,16 @@ error_reporting(E_ALL);
 use App\Core\DbConnect;
 use App\Entities\Creation;
 use App\Entities\CategoryEntities;
+use App\Entities\InscriptionEntities;
 
 class InscriptionModel extends DbConnect{
 
-    public function inscription($nom,$prenom,$adresse,$codepostal,$ville,$telephone,$email){
-        $this->requete = 'INSERT INTO Inscrit VALUES(NULL,:nom,:prenom,:adresse,:codepostal,:ville,:telephone,:email)';
+    public function inscription(InscriptionEntities $form){
+        $this->requete = 'INSERT INTO Inscrit VALUES(NULL,:username,:email,:mdp)';
         $this->requete = $this->connexion->prepare($this->requete);
-        $this->requete->bindParam(':nom',$nom);
-        $this->requete->bindParam(':prenom',$prenom);
-        $this->requete->bindParam(':adresse',$adresse);
-        $this->requete->bindParam(':codepostal',$codepostal);
-        $this->requete->bindParam(':ville',$ville);
-        $this->requete->bindParam(':telephone',$telephone);
-        $this->requete->bindParam(':email',$email);
+        $this->requete->bindValue(':username',$form->getUsername());
+        $this->requete->bindValue(':email',$form->getEmail());
+        $this->requete->bindValue(':mdp',$form->getMdp());
         $this-> executeTryCatch();
 
     }

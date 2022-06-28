@@ -5,12 +5,8 @@ error_reporting(E_ALL);
 
 class InscriptionEntities{
     private $id;
-    private $nom;
-    private $prenom;
-    private $adresse;
-    private $codepostal;
-    private $ville;
-    private $telephone;
+    private $username;
+    private $mdp;
     private $email;
 
 public function getId(){
@@ -20,46 +16,18 @@ public function setId($id){
     $this->id = $id;
     return $this;
 }
-public function getNom(){
-    return $this->nom;
+public function getUsername(){
+    return $this->username;
 }
-public function setNom($nom){
-    $this->nom = $nom;
+public function setUsername($username){
+    $this->username = $username;
     return $this;
 }
-public function getPrenom(){
-    return $this->prenom;
+public function getMdp(){
+    return $this->mdp;
 }
-public function setPrenom($prenom){
-    $this->prenom = $prenom;
-    return $this;
-}
-public function getAdresse(){
-    return $this->adresse;
-}
-public function setAdresse($adresse){
-    $this->adresse = $adresse;
-    return $this;
-}
-public function getCodePostal(){
-    return $this->codepostal;
-}
-public function setCodePostal($codepostal){
-    $this->codepostal = $codepostal;
-    return $this;
-}
-public function getVille(){
-    return $this->ville;
-}
-public function setVille($ville){
-    $this->ville = $ville;
-    return $this;
-}
-public function getTelephone(){
-    return $this->telephone;
-}
-public function setTelephone($telephone){
-    $this->telephone = $telephone;
+public function setmdp($mdp){
+    $this->mdp = $mdp;
     return $this;
 }
 public function getEmail(){

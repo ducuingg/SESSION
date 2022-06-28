@@ -19,15 +19,13 @@ class InscriptionController extends Cont
     public function inscription(){
         $inscription = new InscriptionModel();
         $inscript = new InscriptionEntities();
-        if(isset($_POST['nom'],$_POST['prenom'],$_POST['adresse'],$_POST['codepostal'],$_POST['ville'],$_POST['telephone'],$_POST['email'])){
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $adresse = $_POST['adresse'];
-        $codepostal = $_POST['codepostal'];
-        $ville = $_POST['ville'];
-        $telephone = $_POST['telephone'];
-        $email = $_POST['email'];
-        $inscription->inscription($nom,$prenom,$adresse,$codepostal,$ville,$telephone,$email);
+        if(isset($_POST['action'])){
+        $inscript->setUsername($_POST['username']);
+        $inscript->setEmail($_POST['email']);
+        $inscript->setMdp($_POST['mdp']);
+        $inscription->inscription($inscript);
+        $this->render('inscription');
+        echo "inscrit !"."<a href='index.php?'>Me connecter</a>";
         }
     }
 }

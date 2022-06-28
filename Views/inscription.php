@@ -5,36 +5,17 @@
                     <input type='hidden' class='form-control' name='id' id='id'  readonly>
                         </div>
             <div class='form-group'>
-                <label for='nom'>Nom</label>
-                    <input type='text' class='form-control' name='nom' id='nom'  required>
+                    <input type='text' class='form-control' name='username' id='username' required placeholder="Nom d'utilisateur">
                         </div>
             <div class='form-group'>
-                <label for='prenom'>Prénom</label>
-                    <input type='text' class='form-control' name='prenom' id='prenom' required>
+                    <input type='text' class='form-control' name='email' id='email' required placeholder="Email">
                         </div>
             <div class='form-group'>
-                <label for='adresse'>Adresse</label>
-                    <input type='text' class='form-control' name='adresse' id='adresse'  required>
+                    <input type='text' class='form-control' name='mdp' id='mdp'  required placeholder="Mot de passe">
                         </div>
-            <div class='form-group'>
-                <label for='codepostal'>Code postal</label>
-                    <input type='text' class='form-control' name='codepostal' id='codepostal'required>
-                        </div>
-            <div class='form-group'>
-                <label for='ville'>Ville</label>
-                    <input type='text' class='form-control' name='ville' id='ville' required>
-                        </div>
-                        <div class='form-group'>
-                <label for='telephone'>Téléphone</label>
-                    <input type='text' class='form-control' name='telephone' id='telephone' required>
-                        </div>
-                        <div class='form-group'>
-                <label for='email'>Email</label>
-                    <input type='text' class='form-control' name='email' id='email' required>
-                        </div>
-  
             <div class='form-group pt-3'>
                 <button type='submit' class='btn btn-light text-dark' name='action' id='action' >Inscription</button>
                         </div>
+                        <p><a href="index.php">Me connecter</a></p>
     </form>
 </div>
