@@ -15,6 +15,7 @@ class Dispatcher{
 
         $action = (isset($_GET['action']))?$_GET['action']:"accueil";
         $action = (isset($_GET['action']))?$_GET['action']:"creation";
+        $action = (isset($_GET['action']))?$_GET['action']:"membre";
         $action = $action."Action";
         $my_controller = new $controller();
         $my_controller->$action();

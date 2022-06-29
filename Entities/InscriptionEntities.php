@@ -26,7 +26,7 @@ public function setUsername($username){
 public function getMdp(){
     return $this->mdp;
 }
-public function setmdp($mdp){
+public function setMdp($mdp){
     $this->mdp = $mdp;
     return $this;
 }

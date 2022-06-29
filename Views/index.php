@@ -10,42 +10,28 @@
     <title>Session</title>
 </head>
 <body>
-<!-- Button trigger modal
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button> -->
 
-<!-- Modal
-<div class="modal fade login" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+<form action="index.php?controller=membre&action=connexion" method="POST">
+  <div class="container mt-5 col-3 border border-primary  rounded p-3 shadow">
+  <div class="mt-3 m-auto">
+    <label for="exampleInputEmail1" class="form-label">Identifiant</label>
+    <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">Ne partagez jamais vos identifiants.</div>
   </div>
-</div> -->
-
-<form action="" method="post">
-  <fieldset>
-    <legend>Connexion</legend>
-    <input type="text" name="identifiant" id="identifiant" placeholder="Identifiant" required>
-    <input type="text" name="motdepasse" id="motdepasse" placeholder="Mot de passe" required>
-    <button type="submit" name="action" id="action" class="btn btn-primary">Connexion</button>
-  </fieldset>
+  <div class="mt-3 m-auto">
+    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+    <input type="password" class="form-control" name="mdp" id="mdp">
+  </div>
+  <div class="mt-3 m-auto form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
+  </div>
+  <div class="mt-3 m-auto">
+  <button type="submit" name="connexion" id="connexion" class="btn btn-primary">Me connecter</button>
 </form>
-<p> Pas encore de compte ?<a href="index.php?controller=inscription&action=creation"> Je crée mon compte</a>
-
+<p class="mt-3"> Pas encore de compte ?<a href="index.php?controller=inscription&action=creation"> Je crée mon compte</a>
+</div>
+</div>
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
