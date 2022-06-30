@@ -15,11 +15,6 @@ use App\Entities\InscriptionEntities;
 class MembreModel extends DbConnect{
     
     public function connexionMembre(){
-        // $this->requete = 'SELECT username,mdp FROM Inscrit WHERE id=id';
-        // $resultat = $this->connexion->query($this->requete);
-        // $list = $resultat->fetchAll();
-        // return $list;
-        // var_dump($list);
 
         $this->requete ="SELECT COUNT(*) FROM Inscrit WHERE username=? AND mdp=?";
         $this->requete = $this->connexion->prepare($this->requete);
@@ -27,17 +22,20 @@ class MembreModel extends DbConnect{
         $resultat = $this->requete->fetchColumn();
         return $resultat;
         $this->requete->closeCursor();
+    }
 
+    public function updateMembre(InscriptionEntities $em){
+        $this->requete = "UPDATE Inscrit SET email=:email,nom=:nom,prenom=:prenom,adresse=:adresse WHERE id=:id";
+        $this->requete = $this->connexion->prepare($this->requete);
+        $this->requete->bindValue(':id',$em->getId());
+        $this->requete->bindValue(':email',$em->getEmail());
+        $this->requete->bindValue(':nom',$em->getNom());
+        $this->requete->bindValue(':prenom',$em->getPrenom());
+        $this->requete->bindValue(':adresse',$em->getAdresse());
+        $this->executeTryCatch();
 
     }
-    // $this->requete = 'INSERT INTO Inscrit VALUES(NULL,:username,:email,NULL,NULL,NULL,:mdp)';
-    // $this->requete = $this->connexion->prepare($this->requete);
-    // $this->requete->bindValue(':username',$form->getUsername());
-    // $this->requete->bindValue(':email',$form->getEmail());
-    // $this->requete->bindValue(':mdp',$form->getMdp());
-    // $this-> executeTryCatch();
 
-    
     private function executeTryCatch()
     {
         try {

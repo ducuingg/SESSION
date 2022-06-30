@@ -6,6 +6,9 @@ error_reporting(E_ALL);
 class InscriptionEntities{
     private $id;
     private $username;
+    private $nom;
+    private $prenom;
+    private $adresse;
     private $mdp;
     private $email;
 
@@ -21,6 +24,27 @@ public function getUsername(){
 }
 public function setUsername($username){
     $this->username = $username;
+    return $this;
+}
+public function getNom(){
+    return $this->nom;
+}
+public function setNom($nom){
+    $this->nom = $nom;
+    return $this;
+}
+public function getPrenom(){
+    return $this->prenom;
+}
+public function setPrenom($prenom){
+    $this->prenom = $prenom;
+    return $this;
+}
+public function getAdresse(){
+    return $this->adresse;
+}
+public function setAdresse($adresse){
+    $this->adresse = $adresse;
     return $this;
 }
 public function getMdp(){

@@ -14,8 +14,10 @@ class Dispatcher{
         $controller = $controller."Controller";
 
         $action = (isset($_GET['action']))?$_GET['action']:"accueil";
+        $action = (isset($_GET['action']))?$_GET['action']:"login";
         $action = (isset($_GET['action']))?$_GET['action']:"creation";
         $action = (isset($_GET['action']))?$_GET['action']:"membre";
+        $action = (isset($_GET['action']))?$_GET['action']:"update";
         $action = $action."Action";
         $my_controller = new $controller();
         $my_controller->$action();

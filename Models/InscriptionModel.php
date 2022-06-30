@@ -21,7 +21,6 @@ class InscriptionModel extends DbConnect{
         $this->requete->bindValue(':email',$form->getEmail());
         $this->requete->bindValue(':mdp',$form->getMdp());
         $this-> executeTryCatch();
-
     }
     private function executeTryCatch()
     {

@@ -4,4 +4,9 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: aqua;
+    color:red;
+}
+
+a{
+    color: aqua;
 }

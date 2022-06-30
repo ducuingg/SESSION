@@ -24,8 +24,7 @@ class InscriptionController extends Cont
         $inscript->setEmail($_POST['email']);
         $inscript->setMdp($_POST['mdp']);
         $inscription->inscription($inscript);
-        $this->render('inscription');
-        echo "inscrit !"."<a href='index.php?'>Me connecter</a>";
+        header('location:index.php');
         }
     }
 }

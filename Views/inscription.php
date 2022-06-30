@@ -8,10 +8,10 @@
                     <input type='text' class='form-control' name='username' id='username' required placeholder="Nom d'utilisateur">
                         </div>
             <div class='form-group'>
-                    <input type='text' class='form-control' name='email' id='email' required placeholder="Email">
+                    <input type='email' class='form-control' name='email' id='email' required placeholder="Email">
                         </div>
             <div class='form-group'>
-                    <input type='text' class='form-control' name='mdp' id='mdp'  required placeholder="Mot de passe">
+                    <input type='password' class='form-control' name='mdp' id='mdp'  required placeholder="Mot de passe">
                         </div>
             <div class='form-group pt-3'>
                 <button type='submit' class='btn btn-primary text-white' name='action' id='action' >Je m'inscris</button>
