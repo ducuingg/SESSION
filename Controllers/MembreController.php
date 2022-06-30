@@ -16,7 +16,6 @@ class MembreController extends Cont
   {
     if(!empty($_SESSION['username'])){
         $this->render('membre');
-        echo "<h3><center> Espace Membre</center></h3>";
     }
     else{
         $this->render('login');
@@ -28,9 +27,16 @@ class MembreController extends Cont
     {
    $connexion = new MembreModel();
    $co = new InscriptionEntities();
+   $co->setId($_POST['id']);
    $co->setUsername($_POST['username']);
+//    $co->setEmail($_POST['email']);
+//    $co->setNom($_POST['nom']);
+//    $co->setPrenom($_POST['prenom']);
+//    $co->setAdresse($_POST['adresse']);
    $co->setMdp($_POST['mdp']);
+   var_dump($co);
    $connect = $connexion->connexionMembre($co);
+
     if (isset($_POST['connexion'])){
         if($connect != 1){
             $this->render('login');
@@ -38,8 +44,10 @@ class MembreController extends Cont
         }
     else
     {
-        header('location:index.php');
+        // header('location:index.php');
         $username = $_POST['username'];
+        // $id = $_POST['id'];
+        // $_SESSION['id']= $id;
         $_SESSION['username'] = $username;
         $mdp = $_POST['mdp'];
         $_SESSION['mdp'] = $mdp;
@@ -47,7 +55,7 @@ class MembreController extends Cont
         }
     }
 
-    public function update(){
+    public function update($id){
         $update = new MembreModel();
         if(isset($_POST['action'])){
             $form = new InscriptionEntities();
@@ -57,7 +65,9 @@ class MembreController extends Cont
             $form->setPrenom($_POST['prenom']);
             $form->setAdresse($_POST['adresse']);
             $update->updateMembre($form);
-            var_dump($form);
+        }else{
+            $updateId = $update->find($id);
+            $this->render('membre',['update' => $updateId]);
         }
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use PDO;
 use Exception;
 
 ini_set('display_errors', 1);
@@ -13,15 +13,33 @@ use App\Entities\CategoryEntities;
 use App\Entities\InscriptionEntities;
 
 class MembreModel extends DbConnect{
+
+    public function find(int $id){
+        $this->requete = $this->connexion->prepare("SELECT * FROM Inscrit WHERE id=:id");
+        $this->requete->bindParam(':id',$id);
+        $this->requete->execute();
+        $resultat = $this->requete->fetch();
+        return $resultat;
+    }
     
     public function connexionMembre(){
 
-        $this->requete ="SELECT COUNT(*) FROM Inscrit WHERE username=? AND mdp=?";
+        $this->requete ="SELECT * FROM Inscrit WHERE username=? AND mdp=?";
         $this->requete = $this->connexion->prepare($this->requete);
         $this->requete->execute(array($_POST['username'],$_POST['mdp']));
-        $resultat = $this->requete->fetchColumn();
+        $resultat = $this->requete->fetch();
         return $resultat;
-        $this->requete->closeCursor();
+        // $this->requete->closeCursor();
+
+        // $username = $_POST['username'];
+        // $mdp = $_POST['mdp'];
+        // $this->requete = 'SELECT * FROM Inscrit WHERE username=:username AND mdp=:mdp';
+        // $this->requete = $this->connexion->prepare($this->requete);
+        // $this->requete->bindValue('username',$em->getId());
+        // $this->requete->bindValue('mdp',$em->getMdp());
+        // $this->requete->execute();
+        // $res = $this->requete->fetch(PDO::FETCH_ASSOC);
+        // return $res;
     }
 
     public function updateMembre(InscriptionEntities $em){

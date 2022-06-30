@@ -1,7 +1,8 @@
 <form action="index.php?controller=membre&action=connexion" method="POST">
   <div class="container mt-5 col-3 border border-primary  rounded p-3 shadow">
   <div class="mt-3 m-auto">
-    <label for="exampleInputEmail1" class="form-label">Identifiant</label>
+    <input type='hidden' class='form-control' name='id' id='id'>
+    <label for="username" class="form-label">Identifiant</label>
     <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">Ne partagez jamais vos identifiants.</div>
   </div>
