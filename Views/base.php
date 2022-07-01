@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://127.0.0.1/SESSION/public/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/e2a9598ff7.js" crossorigin="anonymous"></script> 
     <title>Guillaume</title>
@@ -22,7 +22,16 @@
           <a class="nav-link active" aria-current="page" href="index.php?controller=home&action=index"><i class="fa-solid fa-house"></i> Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php?controller=membre&action=espacemembre"><i class="fa-solid fa-id-badge"></i> Mon compte</a>
+          <a class="nav-link active" aria-current="page" 
+          <?php 
+          if(isset($_SESSION['id'])){
+            echo "
+          href='index.php?controller=membre&action=espacemembre&id=".$_SESSION['id']."'>";
+          }
+          else{echo" href='index.php?controller=membre&action=espacemembre&id='>";}
+          ?>
+          
+          <i class="fa-solid fa-id-badge"></i> Mon compte</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php?controller=membre&action=deconnexion">

@@ -12,10 +12,24 @@ error_reporting(E_ALL);
 
 class MembreController extends Cont
 {
-  public function espaceMembre()
+  public function espaceMembre($id)
   {
     if(!empty($_SESSION['username'])){
-        $this->render('membre');
+        $update = new MembreModel();
+        if(isset($_POST['action'])){
+            $form = new InscriptionEntities();
+            $form->setId($_SESSION['id']);
+            $form->setEmail($_POST['email']);
+            $form->setNom($_POST['nom']);
+            $form->setPrenom($_POST['prenom']);
+            $form->setAdresse($_POST['adresse']);
+            $update->updateMembre($form);
+            $updateId = $update->find($id);
+            $this->render('membre',['update'=>$updateId]);
+        }else{
+            $updateId = $update->find($id);
+            $this->render('membre',['update' => $updateId]);
+        }
     }
     else{
         $this->render('login');
@@ -26,48 +40,32 @@ class MembreController extends Cont
   public function connexion()
     {
    $connexion = new MembreModel();
-   $co = new InscriptionEntities();
-   $co->setId($_POST['id']);
-   $co->setUsername($_POST['username']);
-//    $co->setEmail($_POST['email']);
-//    $co->setNom($_POST['nom']);
-//    $co->setPrenom($_POST['prenom']);
-//    $co->setAdresse($_POST['adresse']);
-   $co->setMdp($_POST['mdp']);
-   var_dump($co);
-   $connect = $connexion->connexionMembre($co);
-
+   $connect = $connexion->connexionMembre();
+   $passwordHash = $connect->mdp;
+   $password=$_POST['mdp'];
     if (isset($_POST['connexion'])){
-        if($connect != 1){
+        if(!password_verify($password,$passwordHash)){
             $this->render('login');
             echo "<h5><center>Identifiant ou mot de passe inconnu</center></h5>";
         }
     else
     {
-        // header('location:index.php');
-        $username = $_POST['username'];
-        // $id = $_POST['id'];
-        // $_SESSION['id']= $id;
+        header('location:index.php');
+        $username = $connect->username;
+        $id = $connect->id;
+        $email = $connect->email;
+        $mdp = $connect->mdp;
+        $nom = $connect->nom;
+        $prenom = $connect->prenom;
+        $adresse = $connect->adresse;
+        $_SESSION['email']= $email;
+        $_SESSION['id']= $id;
+        $_SESSION['nom']= $nom;
         $_SESSION['username'] = $username;
-        $mdp = $_POST['mdp'];
         $_SESSION['mdp'] = $mdp;
+        $_SESSION['prenom'] = $prenom;
+        $_SESSION['adresse'] = $adresse;
             }
-        }
-    }
-
-    public function update($id){
-        $update = new MembreModel();
-        if(isset($_POST['action'])){
-            $form = new InscriptionEntities();
-            $form->setId($_POST['id']);
-            $form->setEmail($_POST['email']);
-            $form->setNom($_POST['nom']);
-            $form->setPrenom($_POST['prenom']);
-            $form->setAdresse($_POST['adresse']);
-            $update->updateMembre($form);
-        }else{
-            $updateId = $update->find($id);
-            $this->render('membre',['update' => $updateId]);
         }
     }
 

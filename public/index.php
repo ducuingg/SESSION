@@ -12,7 +12,7 @@ class Dispatcher{
     public function dispatch(){
         $controller = (isset($_GET['controller']))?$_GET['controller']:"Home";
         $controller = $controller."Controller";
-
+        echo "<link rel='stylesheet' href='css/style.css' type='text/css' media='all'>";
         $action = (isset($_GET['action']))?$_GET['action']:"accueil";
         $action = (isset($_GET['action']))?$_GET['action']:"login";
         $action = (isset($_GET['action']))?$_GET['action']:"creation";
@@ -23,3 +23,5 @@ class Dispatcher{
         $my_controller->$action();
     }
 }
+?>
+ <link rel="stylesheet" href="css/style.css" type="text/css" media="all">

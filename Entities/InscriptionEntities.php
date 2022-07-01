@@ -4,13 +4,13 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 class InscriptionEntities{
-    private $id;
-    private $username;
-    private $nom;
-    private $prenom;
-    private $adresse;
-    private $mdp;
-    private $email;
+    public $id;
+    public $username;
+    public $nom;
+    public $prenom;
+    public $adresse;
+    public $mdp;
+    public $email;
 
 public function getId(){
     return $this->id;

@@ -1,12 +1,11 @@
 body{
     background-image: url('public/images/fond.jpg');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: aqua;
-    color:red;
+    color:rgb(58, 58, 58);
 }
 
-a{
-    color: aqua;
+.fond{
+    width: 10em;
 }

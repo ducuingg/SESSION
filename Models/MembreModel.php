@@ -24,9 +24,9 @@ class MembreModel extends DbConnect{
     
     public function connexionMembre(){
 
-        $this->requete ="SELECT * FROM Inscrit WHERE username=? AND mdp=?";
+        $this->requete ="SELECT * FROM Inscrit WHERE username=?";
         $this->requete = $this->connexion->prepare($this->requete);
-        $this->requete->execute(array($_POST['username'],$_POST['mdp']));
+        $this->requete->execute(array($_POST['username']));
         $resultat = $this->requete->fetch();
         return $resultat;
         // $this->requete->closeCursor();
@@ -51,7 +51,6 @@ class MembreModel extends DbConnect{
         $this->requete->bindValue(':prenom',$em->getPrenom());
         $this->requete->bindValue(':adresse',$em->getAdresse());
         $this->executeTryCatch();
-
     }
 
     private function executeTryCatch()

@@ -22,7 +22,7 @@ class InscriptionController extends Cont
         if(isset($_POST['action'])){
         $inscript->setUsername($_POST['username']);
         $inscript->setEmail($_POST['email']);
-        $inscript->setMdp($_POST['mdp']);
+        $inscript->setMdp(password_hash($_POST['mdp'],PASSWORD_DEFAULT));
         $inscription->inscription($inscript);
         header('location:index.php');
         }
