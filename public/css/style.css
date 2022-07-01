@@ -3,9 +3,21 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color:rgb(58, 58, 58);
+    color:rgb(128, 128, 128);
+    background-color: rgb(255, 255, 255);
 }
 
+a{
+    text-decoration: none;
+    color:black;
+}
 .fond{
     width: 10em;
+}
+h4,h5{
+    text-align: center ;
+}
+h5{
+    display: flex;
+    justify-content: center;
 }

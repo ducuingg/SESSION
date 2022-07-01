@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="900;url=index.php?controller=membre&action=deconnexion" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/e2a9598ff7.js" crossorigin="anonymous"></script> 
     <title>Guillaume</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-info text-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"><i class="fa-solid fa-alien-8bit"></i><i class="fa-regular fa-alien-8bit"></i>Site Session</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,8 +30,7 @@
           href='index.php?controller=membre&action=espacemembre&id=".$_SESSION['id']."'>";
           }
           else{echo" href='index.php?controller=membre&action=espacemembre&id='>";}
-          ?>
-          
+          ?>    
           <i class="fa-solid fa-id-badge"></i> Mon compte</a>
         </li>
         <li class="nav-item">

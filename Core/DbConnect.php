@@ -8,10 +8,10 @@ class DbConnect{
     protected $connexion;
     protected $requete;
 
-    const SERVER   = "localhost";
-    const USER     = "debian-sys-maint";
-    const PASSWORD = "ibc0hEsi58Fa5uFU";
-    const BASE     = "session";
+    const SERVER   = "sqlprive-pc2372-001.privatesql.ha.ovh.net";
+    const USER     = "cefiidev1284";
+    const PASSWORD = "u33GnB9c";
+    const BASE     = "cefiidev1284";
 
     public function __construct(){
         try {

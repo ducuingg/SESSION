@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\Controller as Cont;
-use App\Entities\InscriptionEntities;
+use App\Entities\InscritEntities;
 use App\Models\InscriptionModel;
 
 ini_set('display_errors', 1);
@@ -18,7 +18,7 @@ class InscriptionController extends Cont
 
     public function inscription(){
         $inscription = new InscriptionModel();
-        $inscript = new InscriptionEntities();
+        $inscript = new InscritEntities();
         if(isset($_POST['action'])){
         $inscript->setUsername($_POST['username']);
         $inscript->setEmail($_POST['email']);

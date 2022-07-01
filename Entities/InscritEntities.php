@@ -3,7 +3,7 @@ namespace App\Entities;
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-class InscriptionEntities{
+class InscritEntities{
     public $id;
     public $username;
     public $nom;

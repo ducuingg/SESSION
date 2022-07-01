@@ -3,8 +3,7 @@
 namespace App\Controllers;
 session_start();
 use App\Controllers\Controller as Cont;
-use App\Entities\InscriptionEntities;
-use App\Models\InscriptionModel;
+use App\Entities\InscritEntities;
 use App\Models\MembreModel;
 
 ini_set('display_errors', 1);
@@ -17,7 +16,7 @@ class MembreController extends Cont
     if(!empty($_SESSION['username'])){
         $update = new MembreModel();
         if(isset($_POST['action'])){
-            $form = new InscriptionEntities();
+            $form = new InscritEntities();
             $form->setId($_SESSION['id']);
             $form->setEmail($_POST['email']);
             $form->setNom($_POST['nom']);
@@ -26,6 +25,7 @@ class MembreController extends Cont
             $update->updateMembre($form);
             $updateId = $update->find($id);
             $this->render('membre',['update'=>$updateId]);
+            echo "<h5>Modifications enregistrés !</h5>";
         }else{
             $updateId = $update->find($id);
             $this->render('membre',['update' => $updateId]);
@@ -46,7 +46,7 @@ class MembreController extends Cont
     if (isset($_POST['connexion'])){
         if(!password_verify($password,$passwordHash)){
             $this->render('login');
-            echo "<h5><center>Identifiant ou mot de passe inconnu</center></h5>";
+            echo "<h5>Identifiant ou mot de passe inconnu</h5>";
         }
     else
     {
@@ -68,7 +68,11 @@ class MembreController extends Cont
             }
         }
     }
-
+    public function delete($id){
+        $supprimercompte= new MembreModel();
+        $supprimercompte->deletemembre($id);
+        $this->deconnexion();
+    }
     public function deconnexion(){
         if(session_status() == PHP_SESSION_ACTIVE){
             session_destroy();

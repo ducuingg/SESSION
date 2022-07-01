@@ -1,8 +1,8 @@
 <form action="index.php?controller=membre&action=connexion" method="POST">
-  <div class="container mt-5 col-3 border border-primary  rounded p-3 shadow">
+  <div class="container mt-5 col-3 border border-info  rounded p-3 shadow">
   <div class="mt-3 m-auto">
     <input type='hidden' class='form-control' name='id' id='id'>
-    <label for="username" class="form-label">Identifiant</label>
+    <label for="username" class="form-label">Nom d'utilisateur</label>
     <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">Ne partagez jamais vos identifiants.</div>
   </div>
@@ -15,7 +15,7 @@
     <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
   </div>
   <div class="mt-3 m-auto">
-  <button type="submit" name="connexion" id="connexion" class="btn btn-primary">Me connecter</button>
+  <button type="submit" name="connexion" id="connexion" class="btn btn-info">Me connecter</button>
 </form>
 <p class="mt-3"> Pas encore de compte ?<a href="index.php?controller=inscription&action=creation"> Je crée mon compte</a>
 </div>

@@ -14,6 +14,5 @@ class HomeController extends Controller{
        else{
             $this->render('index');
         }
-    
-}
+    }
 }
