@@ -1,5 +1,5 @@
 <form action="index.php?controller=membre&action=connexion" method="POST">
-  <div class="container mt-5 col-3 border border-info  rounded p-3 shadow">
+  <div class="container mt-5 col-3 border bg-dark text-white  rounded p-3 shadow">
   <div class="mt-3 m-auto">
     <input type='hidden' class='form-control' name='id' id='id'>
     <label for="username" class="form-label">Nom d'utilisateur</label>

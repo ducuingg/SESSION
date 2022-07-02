@@ -13,6 +13,10 @@ class MembreController extends Cont
 {
   public function espaceMembre($id)
   {
+    //---------------AVATAR----------------------------------
+    if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])){
+        $this->avatar($id);
+    }
     if(!empty($_SESSION['username'])){
         $update = new MembreModel();
         if(isset($_POST['action'])){
@@ -58,6 +62,7 @@ class MembreController extends Cont
         $nom = $connect->nom;
         $prenom = $connect->prenom;
         $adresse = $connect->adresse;
+        $avatar = $connect->avatar;
         $_SESSION['email']= $email;
         $_SESSION['id']= $id;
         $_SESSION['nom']= $nom;
@@ -65,9 +70,35 @@ class MembreController extends Cont
         $_SESSION['mdp'] = $mdp;
         $_SESSION['prenom'] = $prenom;
         $_SESSION['adresse'] = $adresse;
+        $_SESSION['avatar'] = $avatar;
             }
         }
     }
+    public function avatar($id){
+        $tailleMax = 2097152;
+        $extensionsValides = array('jpg','jpeg','gif','png');
+        if($_FILES['avatar']['size'] <= $tailleMax){
+            $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'],'.'),1));
+            if(in_array($extensionUpload,$extensionsValides)){
+                $chemin = "/home/cefiidev/www/guillaume1284/SESSION/membres/avatars/".$_SESSION['id'].".".$extensionUpload;
+                $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'],$chemin);
+                if($resultat){
+                    $updateavatar= new MembreModel();
+                    $updateavatar->avatarMembre($id);
+                }
+                else{
+                    echo "erreur d'importation";
+                }
+            }
+            else{
+                echo "pas bon format";
+            }
+        }
+        else{
+            echo "Votre fichier est trop lourd (max:2Mo)";
+        }
+    }
+
     public function delete($id){
         $supprimercompte= new MembreModel();
         $supprimercompte->deletemembre($id);

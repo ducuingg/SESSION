@@ -36,7 +36,14 @@ class MembreModel extends DbConnect{
         $this->requete->bindValue(':adresse',$em->getAdresse());
         $this->executeTryCatch();
     }
-
+    public function avatarMembre($id){
+        $this->requete = "UPDATE Inscrit SET avatar =:avatar WHERE id=:id";
+        $this->requete = $this->connexion->prepare($this->requete);
+        $resultat = $this->requete->execute(array(
+            'avatar'=> $_SESSION['id'].".".strtolower(substr(strchr($_FILES['avatar']['name'],'.'),1)),
+            'id'=>$id
+        ));
+    }
     public function deletemembre($id){
         $this->requete = "DELETE FROM Inscrit WHERE id=:id";
         $this->requete = $this->connexion->prepare($this->requete);

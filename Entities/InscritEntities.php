@@ -11,6 +11,7 @@ class InscritEntities{
     public $adresse;
     public $mdp;
     public $email;
+    public $avatar;
 
 public function getId(){
     return $this->id;
@@ -59,6 +60,13 @@ public function getEmail(){
 }
 public function setEmail($email){
     $this->email = $email;
+    return $this;
+}
+public function getAvatar(){
+    return $this->avatar;
+}
+public function setAvatar($avatar){
+    $this->avatar = $avatar;
     return $this;
 }
 }

@@ -11,19 +11,19 @@
     <title>Guillaume</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-info text-white">
+<nav class="navbar navbar-expand-lg bg-dark text-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><i class="fa-solid fa-alien-8bit"></i><i class="fa-regular fa-alien-8bit"></i>Site Session</a>
+    <a class="navbar-brand text-white" href="index.php"><i class="fa-solid fa-alien-8bit"></i><i class="fa-regular fa-alien-8bit"></i>Site Session</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse text-white" id="navbarNavDropdown" >
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php?controller=home&action=index"><i class="fa-solid fa-house"></i> Accueil</a>
+          <a class="nav-link active text-white" aria-current="page" href="index.php?controller=home&action=index"><i class="fa-solid fa-house"></i> Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" 
+          <a class="nav-link active text-white" aria-current="page" 
           <?php 
           if(isset($_SESSION['id'])){
             echo "
@@ -31,16 +31,24 @@
           }
           else{echo" href='index.php?controller=membre&action=espacemembre&id='>";}
           ?>    
-          <i class="fa-solid fa-id-badge"></i> Mon compte</a>
+          <i class="fa-solid fa-id-badge"></i> Espace membre</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php?controller=membre&action=deconnexion">
+          <a class="nav-link active text-white" aria-current="page" href="index.php?controller=membre&action=deconnexion">
             <?php 
           if(empty($_SESSION['username'])){echo "";}else{ echo "<i class='fa-solid fa-right-to-bracket'></i> Déconnexion";};?>
           </a>
         </li>
       </ul>
     </div>
+    <?php
+    if(!empty($_SESSION['avatar'])){
+      echo"<img src="."https://www.cefii-developpements.fr/guillaume1284//SESSION/membres/avatars/".$_SESSION['avatar']." height='50' class='avatarindex'/>";
+    }
+    if(!empty($_SESSION['username'])){
+      echo "<p>".$_SESSION['username']."</p>";
+    }
+  ?>
   </div>
 </nav>
     <?= $content ?>

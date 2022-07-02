@@ -1,15 +1,14 @@
 body{
-    background-image: url('public/images/fond.jpg');
-    background-size: contain;
+    background-image: url('https://www.cefii-developpements.fr/guillaume1284/SESSION/public/images/fond.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color:rgb(128, 128, 128);
-    background-color: rgb(255, 255, 255);
+    color:rgb(255, 255, 255);
 }
 
 a, a:hover{
     text-decoration: none;
-    color:black;
+    color:rgb(219, 178, 178);
 }
 .fond{
     width: 10em;
@@ -18,6 +17,12 @@ h4,h5{
     text-align: center ;
 }
 h5{
+    display: block;
+    margin: auto;
+}
+.avatarindex{
     display: flex;
-    justify-content: center;
+}
+p{
+    padding-left: 1em;
 }

@@ -9,7 +9,7 @@ use App\Entities\InscritEntities;
 class InscriptionModel extends DbConnect{
 
     public function inscription(InscritEntities $form){
-        $this->requete = 'INSERT INTO Inscrit VALUES(NULL,:username,:email,NULL,NULL,NULL,:mdp)';
+        $this->requete = 'INSERT INTO Inscrit VALUES(NULL,:username,:email,NULL,NULL,NULL,:mdp,NULL)';
         $this->requete = $this->connexion->prepare($this->requete);
         $this->requete->bindValue(':username',$form->getUsername());
         $this->requete->bindValue(':email',$form->getEmail());

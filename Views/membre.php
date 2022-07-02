@@ -1,6 +1,6 @@
-<h5 class="btn btn-info mt-3">Espace Membre</h5>
-<div class="container col-5 mt-5 border border-info  rounded p-3 shadow">
-<form action="#" method="POST">
+<h5 class="btn btn-dark text-white m-3">Espace Membre</h5>
+<div class="container col-5 mt-5 border bg-dark text-white  rounded p-3 shadow">
+<form action="#" method="POST" enctype="multipart/form-data">
 <div class="mb-3">
   <label for="username"class="form-label">Identifiant</label>
   <input type="text" class="form-control" id="username" name="username" readonly value="<?php echo $_SESSION['username']; ?>" >
@@ -20,6 +20,15 @@
 <div class="mb-3">
   <label for="adresse" class="form-label">Adresse</label>
   <input type="text" class="form-control" id="adresse" name="adresse" value="<?php echo $update->adresse; ?>" >
+</div>
+<div class="mb-3">
+  <?php 
+ if(!empty($_SESSION['avatar'])){
+  echo"<img src="."https://www.cefii-developpements.fr/guillaume1284//SESSION/membres/avatars/".$_SESSION['avatar']." height='50' class='avatarindex'/>";
+}
+?>
+  <label for="avatar" class="form-label">Avatar</label>
+  <input type="file" class="form-control" id="avatar" name="avatar" >
 </div>
 <div class="mb-3">
 <button type="submit" name="action" id="action"class="btn btn-info">Enregistrer</button>
