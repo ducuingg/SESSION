@@ -25,4 +25,13 @@ h5{
 }
 p{
     padding-left: 1em;
+    color:rgb(219, 178, 178);
+}
+span{
+    padding: none;
+    text-align: center;
+    margin: auto;
+    margin-top: 1em;
+    font-size: 1.8em;
+    text-shadow: -1px 0px 4px rgba(150, 150, 150, 0.97);
 }
