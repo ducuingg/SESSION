@@ -6,8 +6,8 @@ use App\Controllers\Controller as Cont;
 use App\Entities\InscritEntities;
 use App\Models\MembreModel;
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
 class MembreController extends Cont
 {
@@ -45,12 +45,14 @@ class MembreController extends Cont
     {
    $connexion = new MembreModel();
    $connect = $connexion->connexionMembre();
-   $passwordHash = $connect->mdp;
-   $password=$_POST['mdp'];
+    $mdp = $connect->mdp;
+    $_SESSION['mdp'] = $mdp;
+    $passwordHash = $connect->mdp;
+    $password=$_POST['mdp'];
     if (isset($_POST['connexion'])){
         if(!password_verify($password,$passwordHash)){
-            $this->render('login');
-            echo "<h5>Identifiant ou mot de passe inconnu</h5>";
+                $this->render('login');
+                echo "<h5>Identifiant ou mot de passe inconnu</h5>";
         }
     else
     {
@@ -58,7 +60,6 @@ class MembreController extends Cont
         $username = $connect->username;
         $id = $connect->id;
         $email = $connect->email;
-        $mdp = $connect->mdp;
         $nom = $connect->nom;
         $prenom = $connect->prenom;
         $adresse = $connect->adresse;
@@ -67,7 +68,6 @@ class MembreController extends Cont
         $_SESSION['id']= $id;
         $_SESSION['nom']= $nom;
         $_SESSION['username'] = $username;
-        $_SESSION['mdp'] = $mdp;
         $_SESSION['prenom'] = $prenom;
         $_SESSION['adresse'] = $adresse;
         $_SESSION['avatar'] = $avatar;
@@ -97,6 +97,9 @@ class MembreController extends Cont
         else{
             echo "Votre fichier est trop lourd (max:2Mo)";
         }
+    }
+    public function chat(){
+        
     }
 
     public function delete($id){

@@ -19,9 +19,9 @@ class MembreModel extends DbConnect{
     
     public function connexionMembre(){
 
-        $this->requete ="SELECT * FROM Inscrit WHERE username=?";
+        $this->requete ="SELECT * FROM Inscrit WHERE email=?";
         $this->requete = $this->connexion->prepare($this->requete);
-        $this->requete->execute(array($_POST['username']));
+        $this->requete->execute(array($_POST['email']));
         $resultat = $this->requete->fetch();
         return $resultat;
     }
