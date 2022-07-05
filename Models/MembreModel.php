@@ -18,7 +18,6 @@ class MembreModel extends DbConnect{
     }
     
     public function connexionMembre(){
-
         $this->requete ="SELECT * FROM Inscrit WHERE email=?";
         $this->requete = $this->connexion->prepare($this->requete);
         $this->requete->execute(array($_POST['email']));
@@ -43,6 +42,25 @@ class MembreModel extends DbConnect{
             'avatar'=> $_SESSION['id'].".".strtolower(substr(strchr($_FILES['avatar']['name'],'.'),1)),
             'id'=>$id
         ));
+    }
+    public function chatMembre(InscritEntities $c){
+        $this->requete = 'SELECT COUNT(*) AS nombreMessage FROM chat';
+        $this->requete = $this->connexion->prepare($this->requete);
+        $this->requete->execute();
+        $data = $this->requete->fetch();
+        if($data->nombreMessage <= '30'){
+            $this->requete = 'INSERT INTO chat VALUES("",:pseudo,:message,now())';
+            $this->requete = $this->connexion->prepare($this->requete);
+            $this->requete->bindValue(':pseudo',$c->getPseudo());
+            $this->requete->bindValue(':message',$c->getMessage());
+            $this->executeTryCatch();
+        }
+        else{
+            $this->requete = "DELETE FROM chat ORDER BY ID ASC LIMIT 1";
+            $this->requete = $this->connexion->prepare($this->requete);
+            $this->executeTryCatch();
+            $this->chatMembre($c);
+        }
     }
     public function deletemembre($id){
         $this->requete = "DELETE FROM Inscrit WHERE id=:id";

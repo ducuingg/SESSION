@@ -4,14 +4,17 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 class InscritEntities{
-    public $id;
-    public $username;
-    public $nom;
-    public $prenom;
-    public $adresse;
-    public $mdp;
-    public $email;
-    public $avatar;
+    protected $id;
+    protected $username;
+    protected $nom;
+    protected $prenom;
+    protected $adresse;
+    protected $mdp;
+    protected $email;
+    protected $avatar;
+    public    $pseudo;
+    protected $message;
+    protected $heure;
 
 public function getId(){
     return $this->id;
@@ -67,6 +70,27 @@ public function getAvatar(){
 }
 public function setAvatar($avatar){
     $this->avatar = $avatar;
+    return $this;
+}
+public function getPseudo(){
+    return $this->pseudo;
+}
+public function setPseudo($pseudo){
+    $this->pseudo = $pseudo;
+    return $this;
+}
+public function getMessage(){
+    return $this->message;
+}
+public function setMessage($message){
+    $this->message = $message;
+    return $this;
+}
+public function getHeure(){
+    return $this->heure;
+}
+public function setHeure($heure){
+    $this->heure = $heure;
     return $this;
 }
 }

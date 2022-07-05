@@ -6,8 +6,8 @@ use App\Controllers\Controller as Cont;
 use App\Entities\InscritEntities;
 use App\Models\MembreModel;
 
-// ini_set('display_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 class MembreController extends Cont
 {
@@ -64,6 +64,7 @@ class MembreController extends Cont
         $prenom = $connect->prenom;
         $adresse = $connect->adresse;
         $avatar = $connect->avatar;
+        $_SESSION['time'] = time();
         $_SESSION['email']= $email;
         $_SESSION['id']= $id;
         $_SESSION['nom']= $nom;
@@ -99,7 +100,21 @@ class MembreController extends Cont
         }
     }
     public function chat(){
-        
+        if(isset($_POST['send'])){
+            $pseudo = htmlspecialchars($_POST['pseudo']);
+            $message = htmlspecialchars($_POST['message']);
+            $chat = new MembreModel();
+        $tableauchat = new InscritEntities();
+        $tableauchat->setPseudo($pseudo);
+        $tableauchat->setMessage($message);
+        $chat->chatMembre($tableauchat);
+        }
+        if(empty($_POST['send'])){
+            $this->render('chat');
+        }
+            else{
+                $this->render('chat',['chat'=> $tableauchat]);
+        }
     }
 
     public function delete($id){
@@ -108,7 +123,7 @@ class MembreController extends Cont
         $this->deconnexion();
     }
     public function deconnexion(){
-        if(session_status() == PHP_SESSION_ACTIVE){
+        if(session_status() == PHP_SESSION_ACTIVE)  {
             session_destroy();
             header('location:index.php');
         }
