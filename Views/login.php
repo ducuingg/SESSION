@@ -2,9 +2,8 @@
   <div class="container mt-5 col-3 border bg-dark text-white  rounded p-3 shadow">
   <div class="mt-3 m-auto">
     <input type='hidden' class='form-control' name='id' id='id'>
-    <label for="username" class="form-label">Nom d'utilisateur</label>
-    <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">Ne partagez jamais vos identifiants.</div>
+    <label for="email" class="form-label">E-mail</label>
+    <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp">
   </div>
   <div class="mt-3 m-auto">
     <label for="exampleInputPassword1" class="form-label">Mot de passe</label>

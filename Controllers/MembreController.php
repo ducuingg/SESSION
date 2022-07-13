@@ -45,12 +45,14 @@ class MembreController extends Cont
     {
    $connexion = new MembreModel();
    $connect = $connexion->connexionMembre();
-   $passwordHash = $connect->mdp;
-   $password=$_POST['mdp'];
+    $mdp = $connect->mdp;
+    $_SESSION['mdp'] = $mdp;
+    $passwordHash = $connect->mdp;
+    $password=$_POST['mdp'];
     if (isset($_POST['connexion'])){
         if(!password_verify($password,$passwordHash)){
-            $this->render('login');
-            echo "<h5>Identifiant ou mot de passe inconnu</h5>";
+                $this->render('login');
+                echo "<h5>Identifiant ou mot de passe inconnu</h5>";
         }
     else
     {
@@ -58,16 +60,15 @@ class MembreController extends Cont
         $username = $connect->username;
         $id = $connect->id;
         $email = $connect->email;
-        $mdp = $connect->mdp;
         $nom = $connect->nom;
         $prenom = $connect->prenom;
         $adresse = $connect->adresse;
         $avatar = $connect->avatar;
+        $_SESSION['time'] = time();
         $_SESSION['email']= $email;
         $_SESSION['id']= $id;
         $_SESSION['nom']= $nom;
         $_SESSION['username'] = $username;
-        $_SESSION['mdp'] = $mdp;
         $_SESSION['prenom'] = $prenom;
         $_SESSION['adresse'] = $adresse;
         $_SESSION['avatar'] = $avatar;
@@ -98,6 +99,23 @@ class MembreController extends Cont
             echo "Votre fichier est trop lourd (max:2Mo)";
         }
     }
+    public function chat(){
+        if(isset($_POST['send'])){
+            $pseudo = htmlspecialchars($_POST['pseudo']);
+            $message = htmlspecialchars($_POST['message']);
+            $chat = new MembreModel();
+        $tableauchat = new InscritEntities();
+        $tableauchat->setPseudo($pseudo);
+        $tableauchat->setMessage($message);
+        $chat->chatMembre($tableauchat);
+        }
+        if(empty($_POST['send'])){
+            $this->render('chat');
+        }
+            else{
+                $this->render('chat',['chat'=> $tableauchat]);
+        }
+    }
 
     public function delete($id){
         $supprimercompte= new MembreModel();
@@ -105,7 +123,7 @@ class MembreController extends Cont
         $this->deconnexion();
     }
     public function deconnexion(){
-        if(session_status() == PHP_SESSION_ACTIVE){
+        if(session_status() == PHP_SESSION_ACTIVE)  {
             session_destroy();
             header('location:index.php');
         }
